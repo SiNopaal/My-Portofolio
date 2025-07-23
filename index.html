@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naufal Maulana Izzuddin - Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1rem;
+        }
+
+        .tools-container img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 60px;
+            animation: fadeInUp 0.6s ease-in-out;
+        }
+
+        .tools-container img:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #2682bc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-button:hover {
+            background-color: #084298;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3b82f6;
+            --secondary-color: #2563eb;
+            --accent-color: #60a5fa;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-light: #9ca3af;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-tertiary: #374151;
+            --border-color: #374151;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6);
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            --gradient-secondary: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background: var(--bg-secondary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+            z-index: 1001;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            animation: fadeInLeft 1s ease 2s forwards;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .theme-toggle-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .theme-icon {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle-inner {
+            background: var(--gradient-secondary);
+        }
+
+        /* Professional Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+            animation: subtleFloat 20s ease-in-out infinite;
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="dark"] .animated-bg {
+            background:
+                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(96, 165, 250, 0.05) 0%, transparent 50%);
+        }
+
+        /* Professional Header */
+        .professional-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transform: translateY(-100%);
+            animation: slideInHeader 1s ease 0.5s forwards;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .professional-header {
+            background: rgba(17, 24, 39, 0.95);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: fadeInLeft 1s ease 1s forwards;
+        }
+
+        .logo-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .logo-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .logo-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo-text:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 0.6s ease forwards;
+        }
+
+        .nav-menu li:nth-child(1) {
+            animation-delay: 1.2s;
+        }
+
+        .nav-menu li:nth-child(2) {
+            animation-delay: 1.4s;
+        }
+
+        .nav-menu li:nth-child(3) {
+            animation-delay: 1.6s;
+        }
+
+        .nav-menu li:nth-child(4) {
+            animation-delay: 1.8s;
+        }
+
+        .nav-menu li:nth-child(5) {
+            animation-delay: 2s;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            animation: fadeInRight 1s ease 2.2s forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Professional Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1.2s ease 0.8s forwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .hero-badge:hover {
+            background: rgba(37, 99, 235, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-name {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 1.2s ease 1s forwards;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .hero-image:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            backdrop-filter: blur(10px);
+            animation: floatElement 15s infinite ease-in-out;
+        }
+
+        [data-theme="dark"] .floating-element {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            left: 8%;
+            animation-delay: 10s;
+        }
+
+        /* Professional Stats Cards */
+        .stats-overlay {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 3;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        [data-theme="dark"] .stat-card {
+            background: rgba(17, 24, 39, 0.95);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Professional Navigation */
+        .floating-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeInRight 1s ease 1.5s forwards;
+        }
+
+        .nav-indicator {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active::before,
+        .nav-dot:hover::before {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-dot.active {
+            background: var(--primary-color);
+        }
+
+        /* Professional CV Button */
+        .floating-cv {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            opacity: 0;
+            animation: slideInUp 1s ease 2s forwards;
+        }
+
+        .cv-download {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cv-download:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-header.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Professional About Section */
+        .about {
+            background: var(--bg-primary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image-section {
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .about-image-section.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 350px;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .about-content.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-content h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .about-content.animate .about-text:nth-child(2) {
+            animation: fadeInUp 0.6s ease 0.3s forwards;
+        }
+
+        .about-content.animate .about-text:nth-child(3) {
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+        }
+
+        .about-content.animate .about-text:nth-child(4) {
+            animation: fadeInUp 0.6s ease 0.7s forwards;
+        }
+
+        /* Professional Skills Section */
+        .skills {
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            transition: transform 0.6s;
+        }
+
+        .skill-card:hover .skill-icon::before {
+            transform: translateX(100%) skewX(-15deg);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Professional Projects Section */
+        .projects {
+            background: var(--bg-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .project-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+
+        [data-theme="dark"] .project-image {
+            background: #374151;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            transition: transform 0.6s;
+        }
+
+        .project-card:hover .project-image::before {
+            transform: translateX(100%) skewX(-15deg);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* Professional Contact Section */
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .contact-info.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .contact-info-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .contact-methods {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+            border: 1px solid transparent;
+        }
+
+        .contact-item:hover {
+            background: rgba(37, 99, 235, 0.05);
+            border-color: rgba(37, 99, 235, 0.2);
+            transform: translateX(5px);
+        }
+
+        .contact-info.animate .contact-item:nth-child(1) {
+            animation: slideInLeft 0.6s ease 0.2s forwards;
+        }
+
+        .contact-info.animate .contact-item:nth-child(2) {
+            animation: slideInLeft 0.6s ease 0.4s forwards;
+        }
+
+        .contact-info.animate .contact-item:nth-child(3) {
+            animation: slideInLeft 0.6s ease 0.6s forwards;
+        }
+
+        .contact-info.animate .contact-item:nth-child(4) {
+            animation: slideInLeft 0.6s ease 0.8s forwards;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .contact-form.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-form h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .contact-form-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-form.animate .form-group:nth-child(3) {
+            animation: fadeInUp 0.6s ease 0.3s forwards;
+        }
+
+        .contact-form.animate .form-group:nth-child(4) {
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+        }
+
+        .contact-form.animate .form-group:nth-child(5) {
+            animation: fadeInUp 0.6s ease 0.7s forwards;
+        }
+
+        .contact-form.animate .form-group:nth-child(6) {
+            animation: fadeInUp 0.6s ease 0.9s forwards;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .whatsapp-button {
+            background: #25D366;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .whatsapp-button:hover::before {
+            left: 100%;
+        }
+
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Professional Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        [data-theme="dark"] footer {
+            background: #0f172a;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .theme-toggle {
+                left: 20px;
+                top: 20px;
+                transform: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image-container {
+                width: 300px;
+                height: 400px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .floating-nav {
+                display: none;
+            }
+
+            .stats-overlay {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-top: 2rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Keyframe Animations */
+        @keyframes subtleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideInHeader {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatElement {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeOut 1s ease 2s forwards;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Professional Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Memuat Portfolio...</div>
+        </div>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="theme-toggle-inner">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-text">Dark</span>
+        </div>
+    </div>
+
+    <!-- Professional Header -->
+    <header class="professional-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-avatar">
+                    <img src="images/naufal.jpg" alt="Naufal Maulana Izzuddin">
+                </div>
+                <a href="#home" class="logo-text">Naufal Maulana Izzuddin</a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Beranda</a></li>
+                    <li><a href="#about" class="nav-link">Tentang</a></li>
+                    <li><a href="#skills" class="nav-link">Keahlian</a></li>
+                    <li><a href="#projects" class="nav-link">Proyek</a></li>
+                    <li><a href="#contact" class="nav-link">Kontak</a></li>
+                </ul>
+            </nav>
+
+            <a href="#contact" class="cta-button">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <!-- Professional Navigation -->
+    <div class="floating-nav">
+        <div class="nav-indicator">
+            <div class="nav-dot active" data-section="home"></div>
+            <div class="nav-dot" data-section="about"></div>
+            <div class="nav-dot" data-section="skills"></div>
+            <div class="nav-dot" data-section="projects"></div>
+            <div class="nav-dot" data-section="contact"></div>
+        </div>
+    </div>
+
+    <!-- CV Download Button -->
+    <div class="floating-cv">
+        <button class="cv-download" onclick="downloadCV()">
+            <span>📄</span>
+            Unduh CV
+        </button>
+    </div>
+
+    <!-- Professional Hero Section -->
+    <section id="home" class="hero">
+        <!-- Floating Elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <div class="status-dot"></div>
+                        Tersedia untuk Magang & Proyek
+                    </div>
+
+                    <h1>
+                        Halo, Saya <span class="hero-name">Naufal Maulana Izzuddin</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Mahasiswa Telkom University Purwokerto| S1 Rekayasa Perangkat Lunak
+                    </p>
+
+                    <p class="hero-description">
+                        Bersemangat dalam menciptakan solusi digital inovatif dengan teknologi modern.
+                        Spesialisasi dalam pengembangan mobile dengan Flutter dan desain web responsif.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <span>🚀</span>
+                            Mari Terhubung
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <span>💼</span>
+                            Lihat Karya Saya
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-image-container">
+                        <div class="hero-image">
+                            <img src="images/naufal.jpg" alt="Naufal Maulana Izzuddin">
+                        </div>
+
+                        <div class="stats-overlay">
+                            <div class="stat-card">
+                                <span class="stat-number">7</span>
+                                <span class="stat-label">Semester</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">6+</span>
+                                <span class="stat-label">Proyek</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">4+</span>
+                                <span class="stat-label">Keahlian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p class="section-subtitle">
+                    Kenali lebih jauh tentang latar belakang, pengalaman, dan passion saya terhadap teknologi
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-image-section">
+                    <div class="about-image">
+                        <img src="images/naufal.jpg" alt="Naufal Maulana Izzuddin">
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <h3>Mahasiswa Rekayasa Perangkat Lunak yang Bersemangat</h3>
+                    <p class="about-text">
+                        Saya adalah mahasiswa semester 7 program studi Rekayasa Perangkat Lunak di Telkom University
+                        Purwokerto
+                        dengan minat tinggi pada pengembangan antarmuka (UI/UX), pemrograman front-end, dan pengembangan
+                        aplikasi
+                        mobile menggunakan Flutter.
+                    </p>
+                    <p class="about-text">
+                        Terbiasa bekerja dengan desain modern menggunakan Figma serta membangun sistem berbasis web
+                        responsif
+                        menggunakan Tailwind CSS. Saya selalu antusias untuk belajar teknologi baru dan berkontribusi
+                        dalam
+                        proyek-proyek yang menantang.
+                    </p>
+                    <p class="about-text">
+                        Dengan pengalaman dalam berbagai teknologi seperti React.js, Angular, Next.js, dan Flutter, saya
+                        siap
+                        untuk menghadapi tantangan dalam dunia pengembangan perangkat lunak dan berkontribusi dalam tim
+                        yang dinamis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Keahlian Saya</h2>
+                <p class="section-subtitle">
+                    Teknologi dan keterampilan yang telah saya kuasai untuk menciptakan pengalaman digital yang luar
+                    biasa
+                </p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2"
+                                stroke-linejoin="round" />
+                            <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round" />
+                            <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Mobile Development</h3>
+                    <p>
+                        Pengembangan aplikasi mobile menggunakan Flutter (Dart) dengan fokus pada user experience
+                        dan performa yang optimal untuk platform Android dan iOS.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="white" stroke-width="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" stroke="white" stroke-width="2" />
+                            <line x1="12" y1="17" x2="12" y2="21" stroke="white" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Frontend Development</h3>
+                    <p>
+                        Membangun antarmuka web responsif menggunakan React.js, Angular, Next.js, dan Tailwind CSS
+                        dengan desain modern dan interaktif.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke="white" stroke-width="2" />
+                            <path d="M12 22V12" stroke="white" stroke-width="2" />
+                            <path d="M3 7L12 12L21 7" stroke="white" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Desain UI/UX</h3>
+                    <p>
+                        Merancang antarmuka pengguna yang intuitif dan menarik menggunakan Figma dengan prinsip-prinsip
+                        desain terkini dan user-centered design.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2" stroke="white" stroke-width="2" />
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2" stroke="white" stroke-width="2" />
+                            <line x1="6" y1="6" x2="6.01" y2="6" stroke="white" stroke-width="2" />
+                            <line x1="6" y1="18" x2="6.01" y2="18" stroke="white" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <p>
+                        Pengembangan server-side menggunakan Laravel, Express.js, dan integrasi database dengan
+                        PHP, Python, dan SQL untuk aplikasi yang robust.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proyek Unggulan</h2>
+                <p class="section-subtitle">
+                    Showcase karya terbaru dan kontribusi saya dalam berbagai proyek digital
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/bikinaja.jpg" alt="Website BikinAja Screenshot"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Website BikinAja</h3>
+                        <p>
+                            Website BikinAja adalah platform digital yang menyediakan jasa pembuatan website dan
+                            aplikasi profesional.
+                        </p>
+                        <div class="project-tech">TypeScript</div>
+                        <div class="project-tech">HTML/CSS</div>
+                        <div class="project-tech">Desain Responsif</div>
+                        <a href="https://www.bikinaja.my.id/" class="project-button" target="_blank">Kunjungi Proyek</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/kandang.jpg" alt="Kandang Uthuk UI/UX Design"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3>UI/UX Web/App Kandang Uthuk</h3>
+                        <p>
+                            Desain antarmuka pengguna untuk platform Kandang Uthuk dengan fokus pada user experience
+                            yang optimal dan desain yang menarik.
+                        </p>
+                        <div class="project-tech">Figma</div>
+                        <div class="project-tech">Desain UI/UX</div>
+                        <div class="project-tech">Prototyping</div>
+                        <a href="https://www.figma.com/design/wLTmwOn0onC9CXbsUduVWm/Ayam?node-id=0-1&t=NAXn9H8KJaIKwK6Z-1"
+                            class="project-button" target="_blank">Kunjungi Proyek</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/titik.jpg" alt="Titik Visual Landing Page"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Landing Page Titik Visual Yogyakarta</h3>
+                        <p>
+                            Pengembangan landing page untuk Titik Visual Yogyakarta dengan desain modern dan
+                            implementasi yang responsif.
+                        </p>
+                        <div class="project-tech">TypeScript</div>
+                        <div class="project-tech">Figma</div>
+                        <div class="project-tech">Pengembangan Web</div>
+                        <a href="https://www.figma.com/proto/ka2BcBP4LH9Ildt8RSdunV/Website-Titik-Visual?node-id=6-2389&p=f&t=CQZX5HoyJIrPpvB8-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=6%3A2389"
+                            class="project-button" target="_blank">Kunjungi Proyek</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/aqua.png" alt="Aplikasi AquaReminder Interface"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Aplikasi AquaReminder</h3>
+                        <p>
+                            Aplikasi mobile untuk mengingatkan pengguna minum air dengan fitur tracking dan notifikasi.
+                            Saat ini dalam tahap pengembangan.
+                        </p>
+                        <div class="project-tech">Flutter</div>
+                        <div class="project-tech">Dart</div>
+                        <div class="project-tech">Aplikasi Mobile</div>
+                        <a href="https://github.com/SiNopaal/Aplikasi-AquaReminder.git" class="project-button"
+                            target="_blank">Kunjungi Proyek</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/wifi.jpg" alt="Wifi Management System"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Wifi Management System</h3>
+                        <p>
+                            Platform web untuk mengelola pelanggan, tagihan, dan kontrol akses WiFi secara efisien
+                            dengan sistem billing otomatis dan dashboard real-time.
+                        </p>
+                        <div class="project-tech">JavaScript</div>
+                        <div class="project-tech">TypeScript</div>
+                        <div class="project-tech">Tailwind CSS</div>
+                        <a href="https://github.com/SiNopaal/Wifi-Management-System.git" class="project-button"
+                            target="_blank">Kunjungi Proyek</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🚀 Languages & Tools</h2>
+                <p class="section-subtitle">
+                    Showcase karya terbaru dan kontribusi saya dalam berbagai proyek digital
+                </p>
+            </div>
+
+            <div class="tools-container">
+                <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
+                    alt="Python" />
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+                    alt="JavaScript" />
+                <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                    alt="HTML5" />
+                <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"
+                    alt="CSS3" />
+                <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"
+                    alt="Node.js" />
+                <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black"
+                    alt="React" />
+                <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+                <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
+                <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+                <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" />
+                <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" />
+                <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" />
+                <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" />
+                <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" />
+                <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+                <img
+                    src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" />
+                <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
+            </div>
+
+            <!-- Professional Contact Section -->
+            <section id="contact" class="contact">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Mari Bekerja Sama</h2>
+                        <p class="section-subtitle">
+                            Siap mewujudkan ide Anda? Mari diskusikan proyek selanjutnya
+                        </p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <h3>Hubungi Saya</h3>
+                            <p class="contact-info-subtitle">
+                                Saya siap membantu mewujudkan proyek digital Anda. Jangan ragu untuk menghubungi saya
+                                melalui
+                                berbagai platform berikut.
+                            </p>
+
+                            <div class="contact-methods">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📧</div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">Email</div>
+                                        <div class="contact-value">
+                                            <a href="mailto:naufalmaulana806@gmail.com">naufalmaulana806@gmail.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-icon">📱</div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">WhatsApp</div>
+                                        <div class="contact-value">
+                                            <a href="https://wa.me/6281227529614" target="_blank">+62 812-2752-9614</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-icon">🐙</div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">GitHub</div>
+                                        <div class="contact-value">
+                                            <a href="https://github.com/SiNopaal"
+                                                target="_blank">github.com/SiNopaal</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-icon">💼</div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">LinkedIn</div>
+                                        <div class="contact-value">
+                                            <a href="https://www.linkedin.com/in/naufal-maulana-izzuddin-699264370/"
+                                                target="_blank">Profil LinkedIn</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-form">
+                            <h3>Kirim Pesan</h3>
+                            <p class="contact-form-subtitle">
+                                Isi form di bawah ini dan pesan Anda akan langsung dikirim ke WhatsApp saya.
+                            </p>
+
+                            <form id="whatsappForm">
+                                <div class="form-group">
+                                    <label for="name">Nama Lengkap</label>
+                                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Alamat Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Masukkan alamat email Anda"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Pesan</label>
+                                    <textarea id="message" name="message"
+                                        placeholder="Ceritakan tentang proyek atau kesempatan yang Anda tawarkan..."
+                                        required></textarea>
+                                </div>
+                                <button type="submit" class="whatsapp-button">
+                                    <span>💬</span>
+                                    Kirim via WhatsApp
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Footer -->
+            <footer>
+                <div class="footer-content">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/naufal-maulana-izzuddin-699264370/" target="_blank"
+                            class="social-link" aria-label="LinkedIn">💼</a>
+                        <a href="https://github.com/SiNopaal" target="_blank" class="social-link"
+                            aria-label="GitHub">🐙</a>
+                        <a href="mailto:naufalmaulana806@gmail.com" class="social-link" aria-label="Email">📧</a>
+                        <a href="https://wa.me/6281227529614" target="_blank" class="social-link"
+                            aria-label="WhatsApp">📱</a>
+                    </div>
+                    <p>&copy; 2024 Naufal Maulana Izzuddin. Dirancang & Dibangun dengan penuh semangat.</p>
+                </div>
+            </footer>
+
+            <script>
+                // Theme Toggle Functionality
+                function toggleTheme() {
+                    const body = document.body;
+                    const themeToggle = document.querySelector('.theme-toggle-inner');
+                    const themeIcon = document.querySelector('.theme-icon');
+                    const themeText = document.querySelector('.theme-text');
+
+                    if (body.getAttribute('data-theme') === 'dark') {
+                        body.removeAttribute('data-theme');
+                        themeIcon.textContent = '🌙';
+                        themeText.textContent = 'Dark';
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        body.setAttribute('data-theme', 'dark');
+                        themeIcon.textContent = '☀️';
+                        themeText.textContent = 'Light';
+                        localStorage.setItem('theme', 'dark');
+                    }
+                }
+
+                // Load saved theme
+                function loadTheme() {
+                    const savedTheme = localStorage.getItem('theme');
+                    const body = document.body;
+                    const themeIcon = document.querySelector('.theme-icon');
+                    const themeText = document.querySelector('.theme-text');
+
+                    if (savedTheme === 'dark') {
+                        body.setAttribute('data-theme', 'dark');
+                        themeIcon.textContent = '☀️';
+                        themeText.textContent = 'Light';
+                    } else {
+                        body.removeAttribute('data-theme');
+                        themeIcon.textContent = '🌙';
+                        themeText.textContent = 'Dark';
+                    }
+                }
+
+                function downloadCV() {
+                    const a = document.createElement('a');
+                    a.href = 'CV Naufal Maulana Izzuddin.pdf'; // Pastikan file ada di path ini
+                    a.download = 'CV Naufal Maulana Izzuddin.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }
+
+                // WhatsApp Form Handler
+                document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+
+                    const whatsappMessage = `Halo Naufal! 👋
+
+Nama: ${name}
+Email: ${email}
+
+Pesan:
+${message}
+
+Terima kasih!`;
+
+                    const encodedMessage = encodeURIComponent(whatsappMessage);
+                    const whatsappURL = `https://wa.me/6281227529614?text=${encodedMessage}`;
+
+                    const button = this.querySelector('button[type="submit"]');
+                    const originalHTML = button.innerHTML;
+
+                    button.innerHTML = '<span>⏳</span> Mengarahkan ke WhatsApp...';
+                    button.disabled = true;
+
+                    setTimeout(() => {
+                        window.open(whatsappURL, '_blank');
+                        button.innerHTML = '<span>✅</span> Berhasil! Cek WhatsApp Anda';
+                        setTimeout(() => {
+                            button.innerHTML = originalHTML;
+                            button.disabled = false;
+                            this.reset();
+                        }, 3000);
+                    }, 1000);
+                });
+
+                // Intersection Observer for animations
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, observerOptions);
+
+                // Navigation active state
+                function updateActiveNav() {
+                    const sections = document.querySelectorAll('section');
+                    const navDots = document.querySelectorAll('.nav-dot');
+                    const navLinks = document.querySelectorAll('.nav-link');
+
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        if (window.pageYOffset >= sectionTop - 200) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+
+                    // Update navigation dots
+                    navDots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.getAttribute('data-section') === current) {
+                            dot.classList.add('active');
+                        }
+                    });
+
+                    // Update navigation links
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + current) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+
+                // Initialize animations and observers
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Load theme on page load
+                    loadTheme();
+
+                    // Remove loading overlay
+                    setTimeout(() => {
+                        document.querySelector('.loading-overlay').style.display = 'none';
+                    }, 2000);
+
+                    // Observe section headers
+                    document.querySelectorAll('.section-header').forEach(header => {
+                        observer.observe(header);
+                    });
+
+                    // Observe about section elements
+                    observer.observe(document.querySelector('.about-image-section'));
+                    observer.observe(document.querySelector('.about-content'));
+
+                    // Observe skill cards with staggered animation
+                    document.querySelectorAll('.skill-card').forEach((card, index) => {
+                        card.style.transitionDelay = `${index * 0.1}s`;
+                        observer.observe(card);
+                    });
+
+                    // Observe project cards with staggered animation
+                    document.querySelectorAll('.project-card').forEach((card, index) => {
+                        card.style.transitionDelay = `${index * 0.15}s`;
+                        observer.observe(card);
+                    });
+
+                    // Observe contact section elements
+                    observer.observe(document.querySelector('.contact-info'));
+                    observer.observe(document.querySelector('.contact-form'));
+                });
+
+                // Smooth scrolling for navigation
+                document.querySelectorAll('a[href^="#"], .nav-dot').forEach(element => {
+                    element.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        let targetId;
+
+                        if (this.classList.contains('nav-dot')) {
+                            targetId = this.getAttribute('data-section');
+                        } else {
+                            targetId = this.getAttribute('href').substring(1);
+                        }
+
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+
+                // Scroll event listener
+                window.addEventListener('scroll', updateActiveNav);
+
+                // Header scroll effect
+                window.addEventListener('scroll', function () {
+                    const header = document.querySelector('.professional-header');
+                    const body = document.body;
+                    const isDark = body.getAttribute('data-theme') === 'dark';
+
+                    if (window.scrollY > 100) {
+                        header.style.background = isDark ? 'rgba(17, 24, 39, 0.98)' : 'rgba(255, 255, 255, 0.98)';
+                        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        header.style.background = isDark ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+                        header.style.boxShadow = 'none';
+                    }
+                });
+            </script>
+</body>
+
+</html>
