@@ -608,7 +608,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -700,18 +700,13 @@
             transform: translateY(-2px);
         }
 
-        .hero-visual {
-            position: relative;
-            opacity: 0;
-            transform: translateX(50px);
-            animation: slideInRight 1.2s ease 1s forwards;
-        }
-
         .hero-image-container {
             position: relative;
-            width: 400px;
-            height: 500px;
+            width: 320px;
+            height: 420px;
             margin: 0 auto;
+            display: flex;
+            justify-content: center;
         }
 
         .hero-image {
@@ -749,26 +744,30 @@
         /* Professional Stats Cards */
         .stats-overlay {
             position: absolute;
-            bottom: -50px;
+            bottom: -40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             z-index: 3;
             opacity: 0;
             animation: fadeInUp 1s ease 1.5s forwards;
+            justify-content: center;
+            width: 100%;
+            max-width: 300px;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 12px;
             text-align: center;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
-            min-width: 120px;
+            min-width: 90px;
+            flex: 1;
         }
 
         [data-theme="dark"] .stat-card {
@@ -1493,8 +1492,8 @@
             }
             
             .hero-image-container {
-                width: 350px;
-                height: 450px;
+                width: 300px;
+                height: 380px;
             }
             
             .about-grid {
@@ -1530,63 +1529,36 @@
 
             .hero-visual {
                 order: -1;
+                max-width: 400px;
+                margin: 0 auto;
             }
 
             .hero-image-container {
-                width: 280px;
-                height: 350px;
+                width: 260px;
+                height: 320px;
+                margin: 0 auto;
             }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
+            
             .stats-overlay {
                 position: static;
                 transform: none;
                 justify-content: center;
-                margin-top: 2rem;
+                margin-top: 1.5rem;
                 flex-wrap: wrap;
+                width: 100%;
+                max-width: 280px;
+                margin-left: auto;
+                margin-right: auto;
+                gap: 0.6rem;
             }
-
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
-            }
-
-            .contact-icon {
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
+            
+            .stat-card {
+                min-width: 80px;
+                padding: 1rem;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .tools-container {
-                gap: 0.5rem;
-                padding: 1rem;
-                justify-content: center;
-            }
-
-            .tools-container img {
-                height: 50px;
+                font-size: 2rem;
             }
         }
 
@@ -1595,18 +1567,33 @@
                 padding: 0 15px;
             }
 
-            .hero-image-container {
-                width: 250px;
-                height: 320px;
+            .hero-visual {
+                max-width: 100%;
             }
 
+            .hero-image-container {
+                width: 220px;
+                height: 280px;
+                margin: 0 auto;
+            }
+            
             .stats-overlay {
                 gap: 0.5rem;
+                justify-content: center;
+                max-width: 240px;
             }
 
             .stat-card {
-                padding: 1rem;
-                min-width: 100px;
+                padding: 0.8rem;
+                min-width: 70px;
+            }
+            
+            .stat-number {
+                font-size: 1.3rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
             }
 
             .hero-buttons {
@@ -2289,7 +2276,7 @@
                 <a href="mailto:naufalmaulana806@gmail.com" class="social-link" aria-label="Email">📧</a>
                 <a href="https://wa.me/6281227529614" target="_blank" class="social-link" aria-label="WhatsApp">📱</a>
             </div>
-            <p>&copy; 2025 Naufal Maulana Izzuddin. Dirancang & Dibangun dengan penuh semangat.</p>
+            <p>&copy; 2024 Naufal Maulana Izzuddin. Dirancang & Dibangun dengan penuh semangat.</p>
         </div>
     </footer>
 
@@ -2559,7 +2546,7 @@ Terima kasih!`;
             });
         });
 
-        // Enhanced scroll
+        // Enhanced scroll event listener
         let ticking = false;
         
         function handleScroll() {
